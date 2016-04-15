@@ -1,8 +1,5 @@
 package com.example.i043113.lego;
 
-/**
- * Created by i043113 on 4/9/16.
- */
 public class Mission {
 
     String name;

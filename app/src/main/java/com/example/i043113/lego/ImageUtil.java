@@ -4,9 +4,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-/**
- * Created by i043113 on 4/10/16.
- */
 public class ImageUtil {
 
     public static int calculateInSampleSize(BitmapFactory.Options options,
