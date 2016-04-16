@@ -3,6 +3,8 @@ package com.robotikazabulgaria;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -37,7 +39,20 @@ public class MainActivity extends AppCompatActivity {
         final ListView listview = (ListView) findViewById(R.id.listview);
 
         listview.setAdapter(new ListAdapter(this));
+
+        final Button delete=(Button) findViewById(R.id.reset);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Missions.reset();
+                showPoints();
+
+                ListView listView = (ListView) findViewById(R.id.listview);
+                listView.invalidateViews();
+            }
+        });
     }
+
 
     public void showPoints() {
         int points = 0;
@@ -46,6 +61,6 @@ public class MainActivity extends AppCompatActivity {
             points +=morePoints;
         }
         TextView score=(TextView) findViewById(R.id.scoreId);
-        score.setText(points+"/488");
+        score.setText(points+"/501");
     }
 }

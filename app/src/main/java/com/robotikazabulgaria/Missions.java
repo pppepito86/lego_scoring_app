@@ -11,6 +11,11 @@ public class Missions {
         return missions;
     }
 
+    public static void  reset(){
+        loadMissions();
+    }
+
+
     private static void loadMissions() {
         missions = new Mission[] {
                 new Mission("Чистене на морето", new String[]{"не", "да"}, 20,0, R.drawable.more),
@@ -18,10 +23,10 @@ public class Missions {
                 new Mission("Фабрика", new String[]{"не", "да"}, 40,0, R.drawable.fabrika),
                 new Mission("Събиране", new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12", "13", "14", "15", "16"}, 2,4, R.drawable.baza),
                 new Mission("Неразделно събиране", new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12", "13", "14", "15", "16", "17","18"}, 5,0, R.drawable.smetishte),
-                new Mission("Разделно събиране на пластмаса", new String[]{"0 ", "1 ", "2 ", "3 ", "4 ", "5 ", "6 "}, 13,0, R.drawable.plastmasa),
-                new Mission("Разделно събиране на хартия", new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}, 10, R.drawable.hartiq),
+                new Mission("Разделно събиране на пластмаса", new String[]{"0", "1", "2", "3", "4", "5", "6", "7"}, 13,0, R.drawable.plastmasa),
+                new Mission("Разделно събиране на хартия", new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"}, 10, R.drawable.hartiq),
                 new Mission("Филтриране", new String[]{"не", "да"}, 70, R.drawable.filtyr),
-                new Mission("Изолиране", new String[]{"                     нищо", "             изолация", "пълна изолация"}, 40, R.drawable.izolator),
+                new Mission("Изолиране", new String[]{"нищо", "изолация", "пълна изолация"}, 40, R.drawable.izolator),
                 new Mission("Титан", new String[]{"не", "да"}, 30, R.drawable.titan),
                 new Mission("Наказание", new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12", "13", "14", "15", "16"}, -10, R.drawable.penalty),
         };

@@ -1,0 +1,1 @@
+C:\Android\sdk\build-tools\23.0.2\zipalign -f -v 4 C:\Android\projects\lego_scoring_app\app\build\outputs\apk\app-release-unaligned.apk C:\Android\projects\lego_scoring_app\app\build\outputs\apk\app-release.apk

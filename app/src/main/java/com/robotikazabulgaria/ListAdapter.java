@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -49,10 +50,12 @@ public class ListAdapter extends BaseAdapter {
         final Mission mission = Missions.getMissions()[position];
         View rowView;
 
+
+
         if (mission.values[0].equals("не")) {
             rowView = inflater.inflate(R.layout.list_view, null);
             final CheckBox check = (CheckBox) rowView.findViewById(R.id.checkBox2);
-            if (mission.lastState == 1) check.setChecked(true);//sega ? of pak tva s memoryto
+            if (mission.lastState == 1) check.setChecked(true);//sega ? of pak tva s memoryt
             check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -69,15 +72,15 @@ public class ListAdapter extends BaseAdapter {
             Log.e("lego", position + " " + Arrays.toString(mission.values) + " " + mission.lastState);
             rowView = inflater.inflate(R.layout.list_view2, null);
             final Spinner spinner = (Spinner) rowView.findViewById(R.id.spinner);
-            spinner.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, mission.values));
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.spinner_textview, mission.values);
+            adapter.setDropDownViewResource(R.layout.spinner_textview);
+            spinner.setAdapter(adapter);
             spinner.setSelection(mission.lastState);
-
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     mission.lastState = position;
-                    context.showPoints();//gotovo mai super
-
+                    context.showPoints();
                 }
 
                 @Override
@@ -85,6 +88,9 @@ public class ListAdapter extends BaseAdapter {
                 }
             });
         }
+
+
+
         TextView text = (TextView) rowView.findViewById(R.id.text);
         ImageView image = (ImageView) rowView.findViewById(R.id.image);
         text.setText(mission.name);
@@ -105,7 +111,12 @@ public class ListAdapter extends BaseAdapter {
         super.notifyDataSetChanged();//<-- v tozi
         context.showPoints();//nishto.. tva kakvo e? v toq metod mislq che se prerisuva listview-to ne e li samo tochkite da se prerisuvat
     }
+
+
 }
+
+
+
 
 /*ImageButton button1 = (ImageButton) rowView.findViewById(R.id.plus);
             ImageButton button2 = (ImageButton) rowView.findViewById(R.id.minus);

@@ -41,15 +41,13 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         />
-
-
-</RelativeLayout>
-<!--<ImageButton
+    <!--<ImageButton
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/spinner"
         android:id="@+id/minus"
+        android:src="@drawable/minus"
         />
 
     <ImageButton
@@ -59,4 +57,8 @@
         android:id="@+id/plus"
         android:layout_alignParentTop="true"
         android:src="@drawable/plus"
-        />-->
+        />
+    -->
+
+</RelativeLayout>
+<!---->

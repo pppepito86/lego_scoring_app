@@ -33,19 +33,19 @@
                 android:textSize="22sp"
                 android:id="@+id/ttt"
                 android:text="@string/full_app_name"/>
-            <ImageView
+            <!--ImageView
                 android:layout_alignParentRight="true"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:src="@drawable/sap"
-                />
+                /-->
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="0"
         android:gravity="right"
         android:layout_below="@+id/my_toolbar"
@@ -55,6 +55,14 @@
         android:textStyle="bold"
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Нов мач"
+        android:id="@+id/reset"
+        android:layout_alignParentLeft="true" android:layout_below="@+id/my_toolbar"
+
+        />
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/listview"
         android:layout_below="@+id/scoreId"
