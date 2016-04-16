@@ -17,7 +17,7 @@ public class Missions {
                 new Mission("Кула", new String[]{"0 ", "1 ", "2 ", "3 ", "4 "}, 15,1, R.drawable.kula),
                 new Mission("Фабрика", new String[]{"не", "да"}, 40,0, R.drawable.fabrika),
                 new Mission("Събиране", new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12", "13", "14", "15", "16"}, 2,4, R.drawable.baza),
-                new Mission("Неразделно събиране", new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12", "13", "14", "15", "16"}, 5,0, R.drawable.smetishte),
+                new Mission("Неразделно събиране", new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12", "13", "14", "15", "16", "17","18"}, 5,0, R.drawable.smetishte),
                 new Mission("Разделно събиране на пластмаса", new String[]{"0 ", "1 ", "2 ", "3 ", "4 ", "5 ", "6 "}, 13,0, R.drawable.plastmasa),
                 new Mission("Разделно събиране на хартия", new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}, 10, R.drawable.hartiq),
                 new Mission("Филтриране", new String[]{"не", "да"}, 70, R.drawable.filtyr),

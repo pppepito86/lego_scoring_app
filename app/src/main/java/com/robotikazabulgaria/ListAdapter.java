@@ -49,7 +49,7 @@ public class ListAdapter extends BaseAdapter {
         final Mission mission = Missions.getMissions()[position];
         View rowView;
 
-        if (mission.values[0].equals("no")) {
+        if (mission.values[0].equals("не")) {
             rowView = inflater.inflate(R.layout.list_view, null);
             final CheckBox check = (CheckBox) rowView.findViewById(R.id.checkBox2);
             if (mission.lastState == 1) check.setChecked(true);//sega ? of pak tva s memoryto
@@ -70,7 +70,7 @@ public class ListAdapter extends BaseAdapter {
             rowView = inflater.inflate(R.layout.list_view2, null);
             final Spinner spinner = (Spinner) rowView.findViewById(R.id.spinner);
             spinner.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, mission.values));
-
+            spinner.setSelection(mission.lastState);
 
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
