@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -52,8 +53,10 @@ public class ListAdapter extends BaseAdapter {
 
 
 
-        if (mission.values[0].equals("не")) {
+        if (mission instanceof CheckBoxMission) {
             rowView = inflater.inflate(R.layout.list_view, null);
+            final TextView points=(TextView) rowView.findViewById(R.id.points);
+            points.setText(mission.lastState*mission.points+"");
             final CheckBox check = (CheckBox) rowView.findViewById(R.id.checkBox2);
             if (mission.lastState == 1) check.setChecked(true);//sega ? of pak tva s memoryt
             check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -65,14 +68,19 @@ public class ListAdapter extends BaseAdapter {
                     } else {
                         mission.lastState = 0;
                     }
+                    points.setText(mission.lastState*mission.points+"");
                     context.showPoints();
                 }
             });
-        } else {
-            Log.e("lego", position + " " + Arrays.toString(mission.values) + " " + mission.lastState);
-            rowView = inflater.inflate(R.layout.list_view2, null);
+        } else if(mission instanceof ExtraSpinnerMission){
+            final ExtraSpinnerMission extraSpinnerMission = (ExtraSpinnerMission) mission;
+            rowView = inflater.inflate(R.layout.extra_spinner_mssion, null);
+            final TextView points=(TextView) rowView.findViewById(R.id.points);
+            points.setText(mission.lastState*mission.points+"");
             final Spinner spinner = (Spinner) rowView.findViewById(R.id.spinner);
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.spinner_textview, mission.values);
+            TextView plus=(TextView) rowView.findViewById(R.id.plus);
+            ImageView minus=(ImageView) rowView.findViewById(R.id.minus);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.spinner_textview, extraSpinnerMission.values);
             adapter.setDropDownViewResource(R.layout.spinner_textview);
             spinner.setAdapter(adapter);
             spinner.setSelection(mission.lastState);
@@ -80,6 +88,52 @@ public class ListAdapter extends BaseAdapter {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     mission.lastState = position;
+                    points.setText(mission.lastState*mission.points+"");
+                    context.showPoints();
+                }
+
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                }
+
+
+            });
+            plus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(mission.lastState!=extraSpinnerMission.values.length-1) {
+                        mission.lastState++;
+                        spinner.setSelection(mission.lastState);
+                        context.showPoints();
+                    }
+                }
+            });
+            minus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(mission.lastState!=0) {
+                        mission.lastState--;
+                        spinner.setSelection(mission.lastState);
+                        context.showPoints();
+                    }
+                }
+            });
+        } else {
+            SpinnerMission spinnerMission = (SpinnerMission) mission;
+            rowView = inflater.inflate(R.layout.list_view2, null);
+            final TextView points=(TextView) rowView.findViewById(R.id.points);
+            points.setText(mission.lastState*mission.points+"");
+            final Spinner spinner = (Spinner) rowView.findViewById(R.id.spinner);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.spinner_textview, spinnerMission.values);
+            adapter.setDropDownViewResource(R.layout.spinner_textview);
+            spinner.setAdapter(adapter);
+            spinner.setSelection(mission.lastState);
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    mission.lastState = position;
+                    points.setText(mission.lastState*mission.points+"");
                     context.showPoints();
                 }
 
@@ -87,7 +141,9 @@ public class ListAdapter extends BaseAdapter {
                 public void onNothingSelected(AdapterView<?> parent) {
                 }
             });
+
         }
+
 
 
 

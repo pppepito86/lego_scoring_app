@@ -32,6 +32,7 @@
 
                 android:textSize="22sp"
                 android:id="@+id/ttt"
+                android:textColor="@color/white"
                 android:text="@string/full_app_name"/>
             <!--ImageView
                 android:layout_alignParentRight="true"
@@ -50,9 +51,12 @@
         android:gravity="right"
         android:layout_below="@+id/my_toolbar"
         android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:id="@+id/scoreId"
-        android:textSize="17sp"
+        android:textSize="19sp"
         android:textStyle="bold"
+        android:paddingRight="6dp"
         />
 
     <Button
