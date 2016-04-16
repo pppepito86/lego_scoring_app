@@ -1,4 +1,4 @@
-package com.example.i043113.lego;
+package com.robotikazabulgaria;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
