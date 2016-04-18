@@ -1,5 +1,8 @@
 package com.robotikazabulgaria;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -53,6 +56,36 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    static AlertDialog alertDialog;
+    static void showGarbageAlert(Context context) {
+        if (alertDialog!=null) {
+            if (alertDialog.isShowing()) {
+                return;
+            } else {
+                alertDialog = null;
+            }
+        }
+        alertDialog = new AlertDialog.Builder(context).create();
+        alertDialog.setTitle("Предупреждение");
+        alertDialog.setMessage("Превишавате максималния брой боклуци на полето");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        alertDialog = null;
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (alertDialog != null) {
+            alertDialog = null;
+            showGarbageAlert(this);
+        }
+    }
 
     public void showPoints() {
         int points = 0;

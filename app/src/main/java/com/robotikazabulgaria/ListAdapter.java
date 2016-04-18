@@ -1,6 +1,8 @@
 package com.robotikazabulgaria;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -87,9 +89,13 @@ public class ListAdapter extends BaseAdapter {
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    mission.lastState = position;
-                    points.setText(mission.lastState*mission.points+"");
-                    context.showPoints();
+                    if (mission.setLastState(position)) {
+                        points.setText(mission.lastState * mission.points + "");
+                        context.showPoints();
+                    } else {
+                        spinner.setSelection(mission.lastState);
+                        MainActivity.showGarbageAlert(context);
+                    }
                 }
 
 
@@ -103,9 +109,13 @@ public class ListAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     if(mission.lastState!=extraSpinnerMission.values.length-1) {
-                        mission.lastState++;
-                        spinner.setSelection(mission.lastState);
-                        context.showPoints();
+                        if (mission.setLastState(mission.lastState + 1)) {
+                            spinner.setSelection(mission.lastState);
+                            // context.showPoints();
+                        } else {
+                            MainActivity.showGarbageAlert(context);
+
+                        }
                     }
                 }
             });
@@ -113,9 +123,12 @@ public class ListAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     if(mission.lastState!=0) {
-                        mission.lastState--;
-                        spinner.setSelection(mission.lastState);
-                        context.showPoints();
+                        if (mission.setLastState(mission.lastState - 1)) {
+                            spinner.setSelection(mission.lastState);
+                            // context.showPoints();
+                        } else {
+                            MainActivity.showGarbageAlert(context);
+                        }
                     }
                 }
             });
@@ -161,6 +174,7 @@ public class ListAdapter extends BaseAdapter {
 
         return rowView;
     }
+
 
     @Override
     public void notifyDataSetChanged() {

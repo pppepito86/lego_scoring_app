@@ -19,4 +19,9 @@ public class Mission {
         //sq shte ti pokaja neshto
 
     }
+
+    public boolean setLastState(int state) {
+        lastState = state;
+        return true;
+    }
 }
