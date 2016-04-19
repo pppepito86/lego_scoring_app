@@ -59,6 +59,13 @@ public class ListAdapter extends BaseAdapter {
             rowView = inflater.inflate(R.layout.list_view, null);
             final TextView points=(TextView) rowView.findViewById(R.id.points);
             points.setText(mission.lastState*mission.points+"");
+            ImageView image=(ImageView) rowView.findViewById(R.id.image);
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MainActivity.showInfo(context,mission.info,mission.name);
+                }
+            });
             final CheckBox check = (CheckBox) rowView.findViewById(R.id.checkBox2);
             if (mission.lastState == 1) check.setChecked(true);//sega ? of pak tva s memoryt
             check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -77,6 +84,13 @@ public class ListAdapter extends BaseAdapter {
         } else if(mission instanceof ExtraSpinnerMission){
             final ExtraSpinnerMission extraSpinnerMission = (ExtraSpinnerMission) mission;
             rowView = inflater.inflate(R.layout.extra_spinner_mssion, null);
+            ImageView image=(ImageView) rowView.findViewById(R.id.image);
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MainActivity.showInfo(context,mission.info,mission.name);
+                }
+            });
             final TextView points=(TextView) rowView.findViewById(R.id.points);
             points.setText(mission.lastState*mission.points+"");
             final Spinner spinner = (Spinner) rowView.findViewById(R.id.spinner);
@@ -135,6 +149,13 @@ public class ListAdapter extends BaseAdapter {
         } else {
             SpinnerMission spinnerMission = (SpinnerMission) mission;
             rowView = inflater.inflate(R.layout.list_view2, null);
+            ImageView image=(ImageView) rowView.findViewById(R.id.image);
+            image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MainActivity.showInfo(context,mission.info,mission.name);
+                }
+            });
             final TextView points=(TextView) rowView.findViewById(R.id.points);
             points.setText(mission.lastState*mission.points+"");
             final Spinner spinner = (Spinner) rowView.findViewById(R.id.spinner);

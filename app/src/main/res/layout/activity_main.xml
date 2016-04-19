@@ -34,6 +34,16 @@
                 android:id="@+id/ttt"
                 android:textColor="@color/white"
                 android:text="@string/full_app_name"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/menu"
+                android:layout_alignParentRight="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/menu"
+                />
             <!--ImageView
                 android:layout_alignParentRight="true"
                 android:layout_width="50dp"

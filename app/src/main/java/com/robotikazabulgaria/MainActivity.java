@@ -6,6 +6,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -15,6 +18,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     int morePoints =0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-
         final ListView listview = (ListView) findViewById(R.id.listview);
 
         listview.setAdapter(new ListAdapter(this));
@@ -54,6 +57,28 @@ public class MainActivity extends AppCompatActivity {
                 listView.invalidateViews();
             }
         });
+    }
+
+    static AlertDialog info;
+    static void showInfo(Context context,String infoText,String name) {
+        if (info!=null) {
+            if (info.isShowing()) {
+                return;
+            } else {
+                info = null;
+            }
+        }
+        info = new AlertDialog.Builder(context).create();
+        info.setTitle(name);
+        info.setMessage(infoText);
+        info.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        info = null;
+                        dialog.dismiss();
+                    }
+                });
+        info.show();
     }
 
     static AlertDialog alertDialog;
@@ -85,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
             alertDialog = null;
             showGarbageAlert(this);
         }
+        if (info != null) {
+            info = null;
+            showInfo(this,"","");
+        }
     }
 
     public void showPoints() {
@@ -96,4 +125,5 @@ public class MainActivity extends AppCompatActivity {
         TextView score=(TextView) findViewById(R.id.scoreId);
         score.setText(points+"/501");
     }
+
 }
