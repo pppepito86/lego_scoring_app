@@ -18,30 +18,17 @@ public class Missions {
 
     private static void loadMissions() {
         missions = new Mission[] {
-                new CheckBoxMission("Чистене на морето", 20,0, R.drawable.more, "- В морето няма отпадъци"+"\n"+
-                        "Точки: 20"),
-                new ExtraSpinnerMission("Кула", 4, 15,1, R.drawable.kula, "Точки: 15 за всеки етаж от най-високата кула в индустриалната зона"),
-                new CheckBoxMission("Фабрика", 40,0, R.drawable.fabrika, "- Фабриката е в индустриалната зона "+"\n"
-                        +"- Коминът на фабриката не сочи към морето"+"\n"+
-                        "Точки: 40"),
-                new GarbageMission("Събиране", 18, 2, 4, R.drawable.baza, "Точки: 2 за всеки отпадък в базата"),
-                new GarbageMission("Неразделно събиране", 18, 5, R.drawable.smetishte, "Точки: 5 за всеки отпадък в сметището"),
-                new GarbageMission("Разделно събиране на пластмаса", 7, 13, R.drawable.plastmasa, "- Пластмасовият контейнер съдържа само пластмасови отпадъци"+"\n"
-                        +"- Пластмасовият контейнер е в началната си зона"+"\n"+
-                        "Точки: 13 за всеки пластмасов отпадък в пластмасовия контейнер"),
-                new GarbageMission("Разделно събиране на хартия", 11, 10, R.drawable.hartiq, "- Хартиеният контейнер съдържа само хартиени или картонени отпадъци отпадъци"+"\n"
-                        +"- Хартиеният контейнер е в началната си зона"+"\n"+
-                        "Точки: 10 за всеки хартиен или картонен отпадък в хартиения контейнер"),
-                new CheckBoxMission("Филтриране", 70, R.drawable.filtyr, "- Филтърът е върху комина на ТЕЦ-а" +"\n"+
-                        "- ТЕЦ-ът трябва да е в очертанията си" +"\n"+
-                        "Точки: 70"),
-                new SpinnerMission("Изолиране", new String[]{"нищо", "изолация", "пълна изолация"}, 40, R.drawable.izolator, "- За да има изолация като се гледа отгоре трябва да се вижда само капака на кутията, но не и самата кутия " +"\n"+
-                        "- Има пълна изолация, ако погледнато от всяка страна капака закрива горния бял ръб на кутията." +
-                        "- Кутията трябва да е в очертанията си" +"\n"+
-                        "Точки: 40 за изолация, 80 за пълна изолация"),
-                new CheckBoxMission("Титан", 30, R.drawable.titan, "- Роботът изцяло покрива началната позиция на най-десния боклук " +"\n"+
-                        "Точки: 30"),
-                new ExtraSpinnerMission("Наказание", 10, -10, R.drawable.penalty, "Точки: -10 за докосване на робот извън базата"),
+                new CheckBoxMission("Чистене на морето", 20,0, R.drawable.more),
+                new ExtraSpinnerMission("Кула", 4, 15,1, R.drawable.kula),
+                new CheckBoxMission("Фабрика", 40,0, R.drawable.fabrika),
+                new GarbageMission("Събиране", 18, 2, 4, R.drawable.baza),
+                new GarbageMission("Неразделно събиране", 18, 5, R.drawable.smetishte),
+                new GarbageMission("Разделно събиране на пластмаса", 7, 13, R.drawable.plastmasa),
+                new GarbageMission("Разделно събиране на хартия", 11, 10, R.drawable.hartiq),
+                new CheckBoxMission("Филтриране", 70, R.drawable.filtyr),
+                new SpinnerMission("Изолиране", new String[]{"нищо", "изолация", "пълна изолация"}, 40, R.drawable.izolator),
+                new CheckBoxMission("Титан", 30, R.drawable.titan),
+                new ExtraSpinnerMission("Наказание", 10, -10, R.drawable.penalty),
         };
     }
 }

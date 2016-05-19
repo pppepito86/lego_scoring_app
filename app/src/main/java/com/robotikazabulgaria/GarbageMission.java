@@ -2,12 +2,12 @@ package com.robotikazabulgaria;
 
 public class GarbageMission extends ExtraSpinnerMission {
 
-    public GarbageMission(String n, int m, int p, int i, String inf) {
-        this(n, m, p, 0, i, inf);
+    public GarbageMission(String n, int m, int p, int i) {
+        this(n, m, p, 0, i);
     }
 
-    public GarbageMission(String n, int m, int p, int l, int i, String inf) {
-        super(n, m, p, l, i,inf);
+    public GarbageMission(String n, int m, int p, int l, int i) {
+        super(n, m, p, l, i);
     }
 
     public boolean setLastState(int state) {
