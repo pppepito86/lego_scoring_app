@@ -1,24 +1,17 @@
 package com.robotikazabulgaria;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import java.util.Arrays;
 
 public class ListAdapter extends BaseAdapter {
 
@@ -71,6 +64,7 @@ public class ListAdapter extends BaseAdapter {
                         mission.lastState = 0;
                     }
                     points.setText(mission.lastState*mission.points+"");
+                    RestClient.sendRequest(context);
                     context.showPoints();
                 }
             });
