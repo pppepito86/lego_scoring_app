@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
 
+import com.loopj.android.http.AsyncHttpClient;
+
 public class TeamsPageActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     @Override
@@ -16,9 +18,10 @@ public class TeamsPageActivity extends AppCompatActivity implements LoaderManage
         setContentView(R.layout.activity_teams_page);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        final ListView listview = (ListView) findViewById(R.id.teamsListView);
-        //getLoaderManager().initLoader(0, null, this);
-        listview.setAdapter(new ListAdapterTeams(TeamsPageActivity.this));
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        MatchesAsync matches = new MatchesAsync(this);
+        client.get("http://www.pesho.org/tables", matches);
     }
 
     public Loader<Cursor> onCreateLoader(int loaderID, Bundle bundle) {

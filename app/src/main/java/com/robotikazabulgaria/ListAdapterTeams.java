@@ -8,18 +8,21 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class ListAdapterTeams extends BaseAdapter {
-    TeamsPageActivity context;
+
+    private TeamsPageActivity context;
+    private Match[] matches;
     private static LayoutInflater inflater = null;
 
-    public ListAdapterTeams(TeamsPageActivity teamsPage) {
+    public ListAdapterTeams(TeamsPageActivity teamsPage, Match[] matches) {
         context = teamsPage;
+        this.matches = matches;
         inflater = (LayoutInflater) context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        return Matches.getMatches().length;
+        return matches.length;
     }
 
     @Override
@@ -34,13 +37,13 @@ public class ListAdapterTeams extends BaseAdapter {
 
     @Override
     public View getView(final int position, final View convertView, ViewGroup parent) {
-        final Match match = Matches.getMatches()[position];
+        Match match = matches[position];
         View rowView = inflater.inflate(R.layout.team, null);
-        final TextView id=(TextView) rowView.findViewById(R.id.teamId);
+        TextView id=(TextView) rowView.findViewById(R.id.teamId);
         id.setText(match.getTeam().getId());
-        final TextView name=(TextView) rowView.findViewById(R.id.teamName);
+        TextView name=(TextView) rowView.findViewById(R.id.teamName);
         name.setText(match.getTeam().getName());
-        final TextView round=(TextView) rowView.findViewById(R.id.round);
+        TextView round=(TextView) rowView.findViewById(R.id.round);
         round.setText(match.getRound()+"");
 
         return rowView;
