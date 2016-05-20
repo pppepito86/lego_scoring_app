@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Робо БГ</string>
     <string name="full_app_name">Роботика за България</string>
+    <string name="title_activity_teams_page">TeamsPage</string>
 
 
 </resources>

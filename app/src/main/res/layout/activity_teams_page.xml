@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="16dp"
+                tools:context=".TeamsPageActivity"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:elevation="4dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:id="@+id/action_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:textSize="22sp"
+                android:id="@+id/ttt"
+                android:textColor="@color/white"
+                android:text="@string/full_app_name"/>
+            <!--ImageView
+                android:layout_alignParentRight="true"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:src="@drawable/sap"
+                /-->
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/teamsListView"
+              android:layout_alignParentTop="true"
+              android:layout_alignParentLeft="true"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+
+</RelativeLayout>
