@@ -2,37 +2,62 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+    >
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/teamId"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="222"
-        android:textSize="30sp"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_above="@+id/line"
+
         />
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/teamName"
-        android:layout_toRightOf="@+id/teamId"
+        android:layout_toRightOf="@+id/space"
         android:layout_alignParentTop="true"
         android:text="balo"
-        android:textSize="25sp"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         />
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/teamId"
+        android:layout_above="@+id/line"
+        android:id="@+id/space"
+        android:text="    "
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/round"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:text="1"
-        android:textSize="30sp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_above="@+id/line"
         />
     <View
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_below="@+id/round" />
+        android:layout_height="0.1dp"
+        android:id="@+id/line"
+        android:layout_below="@+id/teamName"
+        android:background="@color/white"
+        />
 
 </RelativeLayout>

@@ -2,12 +2,14 @@ package com.robotikazabulgaria;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,6 +17,13 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     int morePoints =0;
+    String teamName;
+    String teamId;
+    String id;
+    int matchRound;
+    int table;
+    AlertDialog backAlert1 ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,19 +48,69 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
+        Intent intent=getIntent();
+        teamName=intent.getStringExtra("name");
+        teamId=intent.getStringExtra("teamId");
+        id=intent.getStringExtra("id");
+        matchRound=intent.getIntExtra("round", 1);
+        table=intent.getIntExtra("table", 1);
+        TextView textViewName= (TextView) findViewById(R.id.ttt);
+        textViewName.setText(teamName);
+        TextView round= (TextView) findViewById(R.id.roundNumber);
+        round.setText(matchRound + "");
         final ListView listview = (ListView) findViewById(R.id.listview);
-
         listview.setAdapter(new ListAdapter(this));
+
+        AlertDialog.Builder backBuilder = new AlertDialog.Builder(MainActivity.this);
+        backBuilder.setMessage("Сигурни ли сте че искате да излезнете и да загубите прогреса си до сега?");
+        backBuilder.setCancelable(true);
+
+        backBuilder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Missions.reset();
+                        finish();
+                    }
+                });
+
+        backBuilder.setNegativeButton("Не", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        final AlertDialog backAlert = backBuilder.create();
+        backAlert1=backAlert;
 
         final Button delete=(Button) findViewById(R.id.reset);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Missions.reset();
-                showPoints();
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("Сигурни ли сте че искате да качите данните и да загубите прогреса си до сега?");
+                builder.setCancelable(true);
 
-                ListView listView = (ListView) findViewById(R.id.listview);
-                listView.invalidateViews();
+                builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Missions.reset();
+                                finish();
+                            }
+                        });
+
+                builder.setNegativeButton("Не", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+        ImageView back= (ImageView) findViewById(R.id.backButton);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backAlert.show();
             }
         });
     }
@@ -85,6 +144,10 @@ public class MainActivity extends AppCompatActivity {
             alertDialog = null;
             showGarbageAlert(this);
         }
+    }
+    @Override
+    public void onBackPressed() {
+        backAlert1.show();
     }
 
     public void showPoints() {

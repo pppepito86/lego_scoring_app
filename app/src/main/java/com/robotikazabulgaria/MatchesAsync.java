@@ -1,6 +1,5 @@
 package com.robotikazabulgaria;
 
-import android.util.Log;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -15,6 +14,11 @@ public class MatchesAsync extends AsyncHttpResponseHandler {
     public MatchesAsync(TeamsPageActivity activity) {
         this.activity = activity;
     }
+    Match[] mMatches;
+
+    public Match[] getMatches() {
+        return mMatches;
+    }
 
     @Override
     public void onStart() {
@@ -25,6 +29,13 @@ public class MatchesAsync extends AsyncHttpResponseHandler {
         String json = new String(response);
         Gson gson = new Gson();
         Match[] matches = (Match[]) gson.fromJson(json, Match[].class);
+        mMatches=matches;
+        for(int i=0;i<mMatches.length;i++){
+            int n=mMatches[i].getTeam().getId().length();
+            for(int j =6;j-n>0;j--){
+                mMatches[i].getTeam().setId(mMatches[i].getTeam().getId()+"  ");
+            }
+        }
         final ListView listview = (ListView) activity.findViewById(R.id.teamsListView);
         listview.setAdapter(new ListAdapterTeams(activity, matches));
     }

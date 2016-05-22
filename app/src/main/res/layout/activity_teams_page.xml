@@ -19,11 +19,10 @@
             android:id="@+id/action_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingStart="20dp"
-            android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingEnd="20dp"
             android:paddingTop="5dp" >
+
 
             <TextView
 
@@ -33,7 +32,8 @@
                 android:textSize="22sp"
                 android:id="@+id/ttt"
                 android:textColor="@color/white"
-                android:text="@string/full_app_name"/>
+                android:text="@string/full_app_name"
+                />
             <!--ImageView
                 android:layout_alignParentRight="true"
                 android:layout_width="50dp"
@@ -47,7 +47,7 @@
 
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
               android:id="@+id/teamsListView"
-              android:layout_alignParentTop="true"
+              android:layout_below="@+id/my_toolbar"
               android:layout_alignParentLeft="true"
               android:layout_width="match_parent"
               android:layout_height="wrap_content" />

@@ -10,7 +10,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:elevation="4dp"
         android:layout_alignParentTop="true"
         android:background="@color/colorPrimary">
@@ -19,21 +19,67 @@
             android:id="@+id/action_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingStart="20dp"
-            android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingEnd="20dp"
             android:paddingTop="5dp" >
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/back"
+                android:id="@+id/backButton"
+                android:layout_above="@+id/line"
+
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:id="@id/line"
+                android:layout_below="@+id/ttt"
+                />
+
             <TextView
 
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/backButton"
                 android:textSize="22sp"
+                android:layout_toLeftOf="@+id/round"
                 android:id="@+id/ttt"
                 android:textColor="@color/white"
-                android:text="@string/full_app_name"/>
+                android:text="Extreme Balo Machines"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/roundNumber"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:layout_centerInParent="true"
+                android:layout_above="@+id/line"
+                android:gravity="center"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="round:"
+                android:id="@+id/round"
+                android:layout_toLeftOf="@+id/roundNumber"
+                android:layout_alignParentTop="true"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:layout_centerInParent="true"
+                android:layout_above="@+id/line"
+                android:gravity="center"
+                />
             <!--ImageView
                 android:layout_alignParentRight="true"
                 android:layout_width="50dp"
@@ -62,7 +108,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="Нов мач"
+        android:text="Качи"
         android:id="@+id/reset"
         android:layout_alignParentLeft="true" android:layout_below="@+id/my_toolbar"
 

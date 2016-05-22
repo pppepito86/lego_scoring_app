@@ -21,7 +21,7 @@ public class RestClient {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] response) {
                 // called when response HTTP status is "200 OK"
-                Toast.makeText(context, new String(response), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, new String(response), Toast.LENGTH_SHORT).show();
             }
 
             @Override

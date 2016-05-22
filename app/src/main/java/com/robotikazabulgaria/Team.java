@@ -17,4 +17,7 @@ public class Team {
     public String getName() {
         return name;
     }
+    public void setId(String i){
+        id=i;
+    }
 }
