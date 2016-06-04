@@ -3,15 +3,22 @@ package com.robotikazabulgaria;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +29,10 @@ public class MainActivity extends AppCompatActivity {
     String id;
     int matchRound;
     int table;
+    int size;
+    int position;
     AlertDialog backAlert1 ;
+
 
 
     @Override
@@ -47,8 +57,17 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+      /*  try {
+            FileOutputStream fou = openFileOutput(file, MODE_WORLD_READABLE);
+            fou = null;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }*/
 
         Intent intent=getIntent();
+       // all=intent.getStringArrayExtra("all");
+        position=intent.getIntExtra("position",0);
+        size=intent.getIntExtra("size",0);
         teamName=intent.getStringExtra("name");
         teamId=intent.getStringExtra("teamId");
         id=intent.getStringExtra("id");
@@ -91,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
                 builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
+                                manageFile(position);
                                 Missions.reset();
                                 finish();
                             }
@@ -159,4 +179,122 @@ public class MainActivity extends AppCompatActivity {
         TextView score=(TextView) findViewById(R.id.scoreId);
         score.setText(points+"/501");
     }
+    String k1="0";
+    String k="";
+    int i=0;
+    private String file = "textFile.txt";
+    private String data = "";
+    private String[] all;
+    String test="";
+    public void manageFile(int n) {
+        try {
+            //FileInputStream fio=openFileInput(file);
+            InputStream instream = openFileInput(file);
+            InputStreamReader inp = new InputStreamReader(instream);;
+            BufferedReader buffreader = new BufferedReader(inp);
+            try {
+
+                k1= buffreader.readLine();
+
+                //
+
+            } catch (IOException e) {}
+        } catch (FileNotFoundException e2) {
+
+        }
+        k="";
+        for(int i=0;i<size;i++) {
+            if(i==n){
+                k+="1";
+            }else {
+                k += k1.charAt(i) + "";
+            }
+          /*  Toast.makeText(MainActivity.this, k + "", Toast.LENGTH_SHORT).show();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(MainActivity.this, k + "", Toast.LENGTH_SHORT).show();
+                }
+            }, 10000);*/
+        }
+        for(int i=0;i<size;i++){
+            data+=k.charAt(i) + "";
+        }
+
+        try {
+            FileOutputStream fou = openFileOutput(file,MODE_WORLD_READABLE);
+            fou.write(data.getBytes());
+            fou.close();
+        } catch (FileNotFoundException e2) {
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+     /*   try {
+            FileInputStream fio=openFileInput(file);
+            try {
+                k=fio.read();
+                k1=k+"";
+                all[0]=k1;
+
+            } catch (IOException e) {
+                try {
+                    FileOutputStream fou = openFileOutput(file, MODE_WORLD_READABLE);
+                    OutputStreamWriter osw = new OutputStreamWriter(fou);
+                    try {
+                        for(int i=0;i<size;i++){
+                            osw.write("0");
+                            osw.flush();
+                            osw.close();
+                            all[i]="48";
+                        }
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                } catch (FileNotFoundException e2) {
+
+                }
+            }
+            while(k1!=null){
+                try {
+                    k=fio.read();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                k1=k+"";
+                all[i]=k1;
+            }
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        all[n-1]="49";
+        try {
+            FileOutputStream fou = openFileOutput(file, MODE_WORLD_READABLE);
+            OutputStreamWriter osw = new OutputStreamWriter(fou);
+            try {
+                for(int i=0;i<size;i++) {
+                    if (all[i] == "48") {
+                        osw.write("0");
+
+                    }else{
+                        osw.write("1");
+                    }
+                    osw.flush();
+                    osw.close();
+                }
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        } catch (FileNotFoundException e2) {
+
+        }*/
+    }
+
+
 }

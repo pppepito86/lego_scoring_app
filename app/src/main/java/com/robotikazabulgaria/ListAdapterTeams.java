@@ -34,18 +34,23 @@ public class ListAdapterTeams extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
-
+    TextView name;
     @Override
     public View getView(final int position, final View convertView, ViewGroup parent) {
         Match match = matches[position];
         View rowView = inflater.inflate(R.layout.team, null);
         TextView id=(TextView) rowView.findViewById(R.id.teamId);
         id.setText(match.getTeam().getId());
-        TextView name=(TextView) rowView.findViewById(R.id.teamName);
+        name=(TextView) rowView.findViewById(R.id.teamName);
         name.setText(match.getTeam().getName());
+
+        if (context.o[position] == '0') {
+            name.setTextColor(0xffff0000);
+        }else{
+            name.setTextColor(0xff00ff00);
+        }
         TextView round=(TextView) rowView.findViewById(R.id.round);
         round.setText(match.getRound()+"");
-
         return rowView;
     }
 

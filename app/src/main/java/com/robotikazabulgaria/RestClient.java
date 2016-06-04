@@ -40,9 +40,9 @@ public class RestClient {
 
     public static Match[] getMatches() {
         return new Match[]{
-                new Match("12342dfasdf3423", new Team("1000", "kasapin40"), 1, 1),
-                new Match("12342dfasdf5555", new Team("1999", "balo"), 1, 2),
-                new Match("12342dfasdf5556", new Team("2000", "cyber"), 1, 3)
+                new Match("12342dfasdf3423", new Team("1000", "kasapin40"), 1, 1,"red"),
+                new Match("12342dfasdf5555", new Team("1999", "balo"), 1, 2,"red"),
+                new Match("12342dfasdf5556", new Team("2000", "cyber"), 1, 3,"red")
 
         };
         /*

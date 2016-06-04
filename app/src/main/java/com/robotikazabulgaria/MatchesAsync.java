@@ -38,6 +38,7 @@ public class MatchesAsync extends AsyncHttpResponseHandler {
         }
         final ListView listview = (ListView) activity.findViewById(R.id.teamsListView);
         listview.setAdapter(new ListAdapterTeams(activity, matches));
+
     }
 
     @Override
