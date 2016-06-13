@@ -7,12 +7,12 @@ public class SpinnerMission extends Mission {
 
     String[] values;
 
-    public SpinnerMission(String n, String[] v, int p, int i) {
-        this(n,v,p,0,i);
+    public SpinnerMission(String id, String n, String[] v, int p, int i) {
+        this(id, n,v,p,0,i);
     }
 
-    public SpinnerMission(String n, String[] v, int p, int l, int i) {
-        super(n, p, l, i);
+    public SpinnerMission(String id, String n, String[] v, int p, int l, int i) {
+        super(id, n, p, l, i);
         values = v;
         //sq shte ti pokaja neshto
 

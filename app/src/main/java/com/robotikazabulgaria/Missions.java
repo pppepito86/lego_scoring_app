@@ -18,17 +18,17 @@ public class Missions {
 
     private static void loadMissions() {
         missions = new Mission[] {
-                new CheckBoxMission("Чистене на морето", 20,0, R.drawable.more),
-                new ExtraSpinnerMission("Кула", 4, 15,1, R.drawable.kula),
-                new CheckBoxMission("Фабрика", 40,0, R.drawable.fabrika),
-                new GarbageMission("Събиране", 18, 2, 4, R.drawable.baza),
-                new GarbageMission("Неразделно събиране", 18, 5, R.drawable.smetishte),
-                new GarbageMission("Разделно събиране на пластмаса", 7, 13, R.drawable.plastmasa),
-                new GarbageMission("Разделно събиране на хартия", 11, 10, R.drawable.hartiq),
-                new CheckBoxMission("Филтриране", 70, R.drawable.filtyr),
-                new SpinnerMission("Изолиране", new String[]{"нищо", "изолация", "пълна изолация"}, 40, R.drawable.izolator),
-                new CheckBoxMission("Титан", 30, R.drawable.titan),
-                new ExtraSpinnerMission("Наказание", 10, -10, R.drawable.penalty),
+                new CheckBoxMission("573e5401d50551814c0de29d", "Чистене на морето", 20,0, R.drawable.more),
+                new ExtraSpinnerMission("573e5401d50551814c0de29e", "Кула", 4, 15,1, R.drawable.kula),
+                new CheckBoxMission("573e5401d50551814c0de29f", "Фабрика", 40,0, R.drawable.fabrika),
+                new GarbageMission("573e5401d50551814c0de2a0", "Събиране", 18, 2, 4, R.drawable.baza),
+                new GarbageMission("573e5401d50551814c0de2a1", "Неразделно събиране", 18, 5, R.drawable.smetishte),
+                new GarbageMission("573e5401d50551814c0de2a2", "Разделно събиране на пластмаса", 7, 13, R.drawable.plastmasa),
+                new GarbageMission("573e5401d50551814c0de2a3", "Разделно събиране на хартия", 11, 10, R.drawable.hartiq),
+                new CheckBoxMission("573e5401d50551814c0de2a4", "Филтриране", 70, R.drawable.filtyr),
+                new SpinnerMission("573e5401d50551814c0de2a5", "Изолиране", new String[]{"нищо", "изолация", "пълна изолация"}, 40, R.drawable.izolator),
+                new CheckBoxMission("573e5401d50551814c0de2a6", "Титан", 30, R.drawable.titan),
+                new ExtraSpinnerMission("573e5401d50551814c0de2a7", "Наказание", 10, -10, R.drawable.penalty),
         };
     }
 }

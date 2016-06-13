@@ -1,6 +1,7 @@
 package com.robotikazabulgaria;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,11 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
+import cz.msebera.android.httpclient.Header;
 
 public class ListAdapter extends BaseAdapter {
 
@@ -66,6 +72,22 @@ public class ListAdapter extends BaseAdapter {
                     points.setText(mission.lastState*mission.points+"");
                     RestClient.sendRequest(context);
                     context.showPoints();
+
+                    AsyncHttpClient client = new AsyncHttpClient();
+                    String url = String.format("http://www.pesho.org/scores/match/%s/mission/%s/points/%s", context.id, mission.id, mission.lastState*mission.points+"");
+                    Log.e("legapp", "url is: " + url);
+                    client.get(url, new AsyncHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                            Log.e("legoapp", "request send successfully");
+                        }
+
+                        @Override
+                        public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                            Log.e("legoapp", "request failed");
+                        }
+                    });
+
                 }
             });
         } else if(mission instanceof ExtraSpinnerMission){
@@ -86,6 +108,20 @@ public class ListAdapter extends BaseAdapter {
                     if (mission.setLastState(position)) {
                         points.setText(mission.lastState * mission.points + "");
                         context.showPoints();
+                        AsyncHttpClient client = new AsyncHttpClient();
+                        String url = String.format("http://www.pesho.org/scores/match/%s/mission/%s/points/%s", context.id, mission.id, mission.lastState*mission.points+"");
+                        Log.e("legapp", "url is: " + url);
+                        client.get(url, new AsyncHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                                Log.e("legoapp", "request send successfully");
+                            }
+
+                            @Override
+                            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                                Log.e("legoapp", "request failed");
+                            }
+                        });
                     } else {
                         spinner.setSelection(mission.lastState);
                         MainActivity.showGarbageAlert(context);
@@ -142,6 +178,20 @@ public class ListAdapter extends BaseAdapter {
                     mission.lastState = position;
                     points.setText(mission.lastState*mission.points+"");
                     context.showPoints();
+                    AsyncHttpClient client = new AsyncHttpClient();
+                    String url = String.format("http://www.pesho.org/scores/match/%s/mission/%s/points/%s", context.id, mission.id, mission.lastState*mission.points+"");
+                    Log.e("legapp", "url is: " + url);
+                    client.get(url, new AsyncHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                            Log.e("legoapp", "request send successfully");
+                        }
+
+                        @Override
+                        public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                            Log.e("legoapp", "request failed");
+                        }
+                    });
                 }
 
                 @Override
