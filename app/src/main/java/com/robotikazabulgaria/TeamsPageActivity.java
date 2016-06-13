@@ -1,16 +1,19 @@
 package com.robotikazabulgaria;
 
 import android.app.LoaderManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -32,14 +35,14 @@ public class TeamsPageActivity extends AppCompatActivity implements LoaderManage
     MatchesAsync matches;
     String k;
     public char[] o;
-    Button reset;
+    Button menu;
+    String table="table.txt";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teams_page);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        reset= (Button) findViewById(R.id.reset);
         File file=new File(this.getFilesDir(),"/"+fileName);
      /*   if(file.exists()) {
 
@@ -48,28 +51,14 @@ public class TeamsPageActivity extends AppCompatActivity implements LoaderManage
         }*/
         AsyncHttpClient client = new AsyncHttpClient();
         matches= new MatchesAsync(this);
-        reset.setOnClickListener(new View.OnClickListener() {
+        menu= (Button) findViewById(R.id.menu);
+        menu.setText(readTable());
+        menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(int i=0;i<80;i++){
-                    data+="0";
-                    try {
-                        FileOutputStream fou = openFileOutput(fileName,MODE_WORLD_READABLE);
-                        fou.write(data.getBytes());
-                        fou.close();
-                    } catch (FileNotFoundException e2) {
+                setTable();
+                menu.setText(readTable());
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                o=new char[k.length()];
-                for(int i=0;i<k.length();i++){
-                    o[i]='0';
-                }
-                if ( ((ListAdapterTeams)((ListView) findViewById(R.id.teamsListView)).getAdapter())!=null) {
-                    ((ListAdapterTeams) ((ListView) findViewById(R.id.teamsListView)).getAdapter()).notifyDataSetChanged();
-                }
             }
         });
 
@@ -153,6 +142,65 @@ public class TeamsPageActivity extends AppCompatActivity implements LoaderManage
         intent.putExtra("table", table);
         startActivity(intent);
     }
+
+    public  void setTable(){
+        AlertDialog.Builder backBuilder = new AlertDialog.Builder(TeamsPageActivity.this);
+        final EditText input = new EditText(TeamsPageActivity.this);
+        backBuilder.setView(input);
+        backBuilder.setTitle("Table");
+        backBuilder.setCancelable(true);
+        backBuilder.setPositiveButton("set", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String value = input.getText().toString().trim();
+                if (value.equals("1") || value.equals("2") || value.equals("3") || value.equals("4")) {
+                    try {
+                        FileOutputStream fou = openFileOutput(table, MODE_WORLD_READABLE);
+                        fou.write(value.getBytes());
+                        fou.close();
+                    } catch (FileNotFoundException e3) {
+
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    if (((ListAdapterTeams) ((ListView) findViewById(R.id.teamsListView)).getAdapter()) != null) {
+                        ((ListAdapterTeams) ((ListView) findViewById(R.id.teamsListView)).getAdapter()).setTable(value);
+                        ((ListAdapterTeams) ((ListView) findViewById(R.id.teamsListView)).getAdapter()).notifyDataSetChanged();
+                    }
+                    menu.setText(readTable());
+                }
+
+            }
+
+        });
+        backBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
+
+        {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        final AlertDialog alert = backBuilder.create();
+        alert.show();
+    }
+    String readTable(){
+        String value="0";
+        try {
+
+            InputStream instream = openFileInput(table);
+            InputStreamReader inp = new InputStreamReader(instream);
+            BufferedReader buffreader = new BufferedReader(inp);
+            try {
+                value = buffreader.readLine();
+
+            } catch (IOException e) {
+
+            }
+        } catch (FileNotFoundException e2) {
+
+        }
+        menu.setText(value);
+        return value;
+    };
 
     public Loader<Cursor> onCreateLoader(int loaderID, Bundle bundle) {
         return null;

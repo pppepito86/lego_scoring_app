@@ -24,14 +24,14 @@
             android:paddingTop="5dp" >
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:text="ново"
-                android:id="@+id/reset"
-                />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:text="0"
+            android:id="@+id/menu"
+            />
 
             <TextView
 

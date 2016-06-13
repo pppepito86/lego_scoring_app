@@ -7,17 +7,64 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListAdapterTeams extends BaseAdapter {
 
     private TeamsPageActivity context;
     private Match[] matches;
+    private Match[] origMatches;
+
     private static LayoutInflater inflater = null;
+    String table="table.txt";
 
     public ListAdapterTeams(TeamsPageActivity teamsPage, Match[] matches) {
         context = teamsPage;
+        this.origMatches = matches;
         this.matches = matches;
         inflater = (LayoutInflater) context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        readTable();
+    }
+
+    public  void readTable(){
+        String data="";
+        try {
+            //FileInputStream fio=openFileInput(file);
+            InputStream instream = context.openFileInput(table);
+            InputStreamReader inp = new InputStreamReader(instream);;
+            BufferedReader buffreader = new BufferedReader(inp);
+            try {
+
+                data= buffreader.readLine();
+
+            } catch (IOException e) {
+
+            }
+        } catch (FileNotFoundException e2) {
+
+        }
+        setTable(data);
+    }
+
+    public void setTable(String n){
+        int tableId = 0;
+        try {
+            tableId = Integer.parseInt(n);
+        }catch (NumberFormatException e) {
+
+        }
+        List<Match> list = new ArrayList<>();
+        for (Match match:origMatches) {
+            if(match.getTable() == tableId) list.add(match);
+        }
+        matches=list.toArray(new Match[list.size()]);
     }
 
     @Override
@@ -57,8 +104,7 @@ public class ListAdapterTeams extends BaseAdapter {
 
     @Override
     public void notifyDataSetChanged() {
-        super.notifyDataSetChanged();//<-- v tozi
-       //shto.. tva kakvo e? v toq metod mislq che se prerisuva listview-to ne e li samo tochkite da se prerisuvat
+        super.notifyDataSetChanged();
     }
 
 }
