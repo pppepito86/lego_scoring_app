@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         textViewName.setText(teamName);
         TextView round= (TextView) findViewById(R.id.roundNumber);
         round.setText(matchRound + "");
+        getData();
         final ListView listview = (ListView) findViewById(R.id.listview);
         listview.setAdapter(new ListAdapter(this));
 
@@ -111,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 manageFile(position);
+                                saveData();
                                 Missions.reset();
                                 finish();
                             }
@@ -209,14 +211,7 @@ public class MainActivity extends AppCompatActivity {
             }else {
                 k += k1.charAt(i) + "";
             }
-          /*  Toast.makeText(MainActivity.this, k + "", Toast.LENGTH_SHORT).show();
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(MainActivity.this, k + "", Toast.LENGTH_SHORT).show();
-                }
-            }, 10000);*/
+
         }
         for(int i=0;i<size;i++){
             data+=k.charAt(i) + "";
@@ -233,67 +228,52 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-     /*   try {
-            FileInputStream fio=openFileInput(file);
-            try {
-                k=fio.read();
-                k1=k+"";
-                all[0]=k1;
 
-            } catch (IOException e) {
-                try {
-                    FileOutputStream fou = openFileOutput(file, MODE_WORLD_READABLE);
-                    OutputStreamWriter osw = new OutputStreamWriter(fou);
-                    try {
-                        for(int i=0;i<size;i++){
-                            osw.write("0");
-                            osw.flush();
-                            osw.close();
-                            all[i]="48";
-                        }
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    }
-                } catch (FileNotFoundException e2) {
+    }
 
-                }
+    public void saveData(){
+        try {
+            FileOutputStream fou = openFileOutput("match_"+id,MODE_WORLD_READABLE);
+            StringBuilder sb = new StringBuilder();
+            for (Mission mission: Missions.getMissions()) {
+                sb.append(mission.points * mission.lastState);
+                sb.append(",");
             }
-            while(k1!=null){
-                try {
-                    k=fio.read();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                k1=k+"";
-                all[i]=k1;
-            }
+            sb.deleteCharAt(sb.length()-1);
+            fou.write(sb.toString().getBytes());
+            fou.close();
+        } catch (FileNotFoundException e3) {
 
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
 
-        all[n-1]="49";
-        try {
-            FileOutputStream fou = openFileOutput(file, MODE_WORLD_READABLE);
-            OutputStreamWriter osw = new OutputStreamWriter(fou);
-            try {
-                for(int i=0;i<size;i++) {
-                    if (all[i] == "48") {
-                        osw.write("0");
+    }
 
-                    }else{
-                        osw.write("1");
-                    }
-                    osw.flush();
-                    osw.close();
-                }
-            } catch (IOException e1) {
-                e1.printStackTrace();
+    public void getData(){
+        String data=null;
+        try {
+            //FileInputStream fio=openFileInput(file);
+            InputStream instream = openFileInput("match_"+id);
+            InputStreamReader inp = new InputStreamReader(instream);;
+            BufferedReader buffreader = new BufferedReader(inp);
+            try {
+
+                data= buffreader.readLine();
+
+            } catch (IOException e) {
+
             }
         } catch (FileNotFoundException e2) {
 
-        }*/
+        }
+        if(data!=null){
+            String[] points= data.split(",");
+            Mission[] missions=Missions.getMissions();
+            for(int i =0;i<points.length;i++){
+                missions[i].lastState=Integer.parseInt(points[i])/missions[i].points;
+            }
+        }
     }
 
 
