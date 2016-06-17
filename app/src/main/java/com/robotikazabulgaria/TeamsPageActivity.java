@@ -98,7 +98,7 @@ public class TeamsPageActivity extends AppCompatActivity implements LoaderManage
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mMatches = matches.getMatches();
+               // mMatches = matches.getMatches();
                 startActivity(position, mMatches[position].getTeam().getName(), mMatches[position].getTeam().getId(), mMatches[position].getId(), mMatches[position].getRound(), mMatches[position].getTable());
             }
         });

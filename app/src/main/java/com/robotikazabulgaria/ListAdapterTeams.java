@@ -65,6 +65,7 @@ public class ListAdapterTeams extends BaseAdapter {
             if(match.getTable() == tableId) list.add(match);
         }
         matches=list.toArray(new Match[list.size()]);
+        context.mMatches = matches;
     }
 
     @Override
