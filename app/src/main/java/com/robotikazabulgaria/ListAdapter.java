@@ -97,11 +97,12 @@ public class ListAdapter extends BaseAdapter {
             points.setText(mission.lastState*mission.points+"");
             final Spinner spinner = (Spinner) rowView.findViewById(R.id.spinner);
             TextView plus=(TextView) rowView.findViewById(R.id.plus);
-            ImageView minus=(ImageView) rowView.findViewById(R.id.minus);
+            View minus= rowView.findViewById(R.id.minus);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, R.layout.spinner_textview, extraSpinnerMission.values);
             adapter.setDropDownViewResource(R.layout.spinner_textview);
             spinner.setAdapter(adapter);
             spinner.setSelection(mission.lastState);
+            spinner.setEnabled(false);
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
