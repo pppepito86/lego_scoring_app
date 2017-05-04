@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     static AlertDialog alertDialog;
-    static void showGarbageAlert(Context context) {
+    static void showObjectsAlert(Context context,String type) {
         if (alertDialog!=null) {
             if (alertDialog.isShowing()) {
                 return;
@@ -91,7 +91,12 @@ public class MainActivity extends AppCompatActivity {
         }
         alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle("Предупреждение");
-        alertDialog.setMessage("Превишавате максималния брой боклуци на полето");
+        if(type=="animals"){
+            alertDialog.setMessage("Превишавате максималния брой животни на полето");
+        }else{
+            alertDialog.setMessage("Превишавате максималния брой риби на полето");
+        }
+
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -107,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         if (alertDialog != null) {
             alertDialog = null;
-            showGarbageAlert(this);
+            showObjectsAlert(this,"animals");
         }
     }
     @Override

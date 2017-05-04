@@ -1,8 +1,5 @@
 package com.robotikazabulgaria;
 
-/**
- * Created by Bobi Mitov on 16.4.2016 г..
- */
 public class SpinnerMission extends Mission {
 
     String[] values;
@@ -20,7 +17,7 @@ public class SpinnerMission extends Mission {
     public SpinnerMission(String id, String n, String[] v, int p, int l, int i) {
         super(id, n, p, l, i);
         values = v;
-        //sq shte ti pokaja neshto
+
 
     }
 }

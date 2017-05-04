@@ -1,12 +1,12 @@
 package com.robotikazabulgaria;
 
-public class GarbageMission extends ExtraSpinnerMission {
+public class AnimalsMission extends ExtraSpinnerMission {
 
-    public GarbageMission( String n, int m, int p, int i) {
+    public AnimalsMission(String n, int m, int p, int i) {
         this("k", n, m, p, 0, i);
     }
 
-    public GarbageMission(String id, String n, int m, int p, int l, int i) {
+    public AnimalsMission(String id, String n, int m, int p, int l, int i) {
         super(id, n, m, p, l, i);
     }
 
@@ -22,11 +22,11 @@ public class GarbageMission extends ExtraSpinnerMission {
     synchronized static boolean garbageIsOk(int diff) {
         int garbageCount = diff;
         for (Mission mission: Missions.getMissions()) {
-            if (mission instanceof GarbageMission) {
+            if (mission instanceof AnimalsMission) {
                 garbageCount += mission.lastState;
             }
         }
-        return garbageCount <= 18;
+        return garbageCount <= 7;
     }
 
 }
