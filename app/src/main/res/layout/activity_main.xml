@@ -49,7 +49,7 @@
                 android:layout_toLeftOf="@+id/round"
                 android:id="@+id/ttt"
                 android:textColor="@color/white"
-                android:text="Extreme Balo Machines"
+                android:text="lego"
                 android:gravity="center_vertical"/>
 
             <TextView
@@ -110,8 +110,9 @@
         android:layout_height="40dp"
         android:text="Качи"
         android:id="@+id/reset"
-        android:layout_alignParentLeft="true" android:layout_below="@+id/my_toolbar"
-
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/my_toolbar"
+        android:visibility="gone"
         />
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/listview"

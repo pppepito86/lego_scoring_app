@@ -2,8 +2,8 @@ package com.robotikazabulgaria;
 
 public class GarbageMission extends ExtraSpinnerMission {
 
-    public GarbageMission(String id, String n, int m, int p, int i) {
-        this(id, n, m, p, 0, i);
+    public GarbageMission( String n, int m, int p, int i) {
+        this("k", n, m, p, 0, i);
     }
 
     public GarbageMission(String id, String n, int m, int p, int l, int i) {
