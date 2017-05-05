@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         if (alertDialog != null) {
             alertDialog = null;
-            showObjectsAlert(this,"animals");
+            showObjectsAlert(this, "animals");
         }
     }
     @Override
@@ -123,8 +123,13 @@ public class MainActivity extends AppCompatActivity {
     public void showPoints() {
         int points = 0;
         for (Mission mission: Missions.getMissions()) {
-            points += mission.lastState*mission.points;
-            points +=morePoints;
+            if(mission instanceof DifSpinnerMission){
+                points += mission.difPoints[mission.lastState];
+            }else {
+                points += mission.lastState * mission.points;
+
+            }
+            points += morePoints;
         }
         TextView score=(TextView) findViewById(R.id.scoreId);
         score.setText(points+"/501");

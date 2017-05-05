@@ -26,7 +26,7 @@ public class FishMission extends ExtraSpinnerMission {
                 garbageCount += mission.lastState;
             }
         }
-        return garbageCount <= 12;
+        return garbageCount <= 5;
     }
 
 }

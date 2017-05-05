@@ -18,15 +18,15 @@ public class Missions {
 
     private static void loadMissions() {
         missions = new Mission[] {
-                new FishMission("Аквариум без база", 13, 5, R.drawable.smetishte),
+                new FishMission("Аквариум без база", 5, 13, R.drawable.smetishte),
                 new FishMission("Аквариум с база", 5, 5, R.drawable.smetishte),
-                new CheckBoxMission("Клопка", 20,0, R.drawable.more),
+                new CheckBoxMission("Клопка", 25,0, R.drawable.more),
                 new CheckBoxMission("Хищник", 35,0, R.drawable.more),
                 new CheckBoxMission("Горила", 80,0, R.drawable.more),
-                new CheckBoxMission("Свобода", 40,0, R.drawable.more),
+                new SpinnerMission("Свобода", new String[]{"няма","фаза1", "фаза2"}, 20, R.drawable.izolator),
                 new SpinnerMission("Нефтена платформа", new String[]{"няма","фаза1", "фаза2"}, 25, R.drawable.izolator),
-                new AnimalsMission("Животни в базата", 10, 5, R.drawable.smetishte),
-                new AnimalsMission("Животни в зоо", 5, 5, R.drawable.smetishte),
+                new AnimalsMission("Животни в базата", 16, 10, R.drawable.smetishte),
+                new AnimalsMission("Животни в зоо", 16, 13, R.drawable.smetishte),
                 new CheckBoxMission("Семейство", 40,0, R.drawable.more),
                 new DifSpinnerMission("Лъв",new String[]{"няма","фаза1", "фаза2"}, new Integer[]{0,20,35}, R.drawable.izolator),
                 new DifSpinnerMission("Жираф",new String[]{"няма","фаза1", "фаза2"}, new Integer[]{0,30,50}, R.drawable.izolator),

@@ -49,7 +49,7 @@
                 android:layout_toLeftOf="@+id/round"
                 android:id="@+id/ttt"
                 android:textColor="@color/white"
-                android:text="lego"
+                android:text=" РобоБГ"
                 android:gravity="center_vertical"/>
 
             <TextView
@@ -67,6 +67,17 @@
                 android:gravity="center"
                 android:visibility="gone"
                 />
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="false"
+                android:layout_above="@+id/line"
+                android:gravity="right"
+                android:src="@drawable/sap"
+                />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
