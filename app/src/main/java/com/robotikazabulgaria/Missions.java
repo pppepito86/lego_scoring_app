@@ -1,6 +1,6 @@
 package com.robotikazabulgaria;
 
-public class Missions {
+public class        Missions {
 
     private static Mission[] missions;
 
@@ -18,7 +18,22 @@ public class Missions {
 
     private static void loadMissions() {
         missions = new Mission[] {
-                new FishMission("Аквариум без база", 5, 13, R.drawable.smetishte),
+                new DifSpinnerMission("Шамандура",new String[]{"няма","фаза1", "фаза2"}, new Integer[]{0,20,60}, R.drawable.izolator),
+                new DifSpinnerMission("Батерии",new String[]{"няма","фаза1", "фаза2"}, new Integer[]{0,30,50}, R.drawable.izolator),
+                new CheckBoxMission("Цунами", 20,0, R.drawable.more),
+                new CheckBoxMission("Активиране на пречиствателя", 10,0, R.drawable.more),
+                new DifSpinnerMission("Пречистване",new String[]{"няма","фаза1", "фаза2","фаза3"}, new Integer[]{0,30,50,80}, R.drawable.izolator),
+                new CheckBoxMission("Спондж Боби", 30,0, R.drawable.more),
+                new ExtraSpinnerMission("573e5401d50551814c0de29e", "Център за обработка на данни", 10, 7,0, R.drawable.kula),
+                new DifSpinnerMission("Боцкало",new String[]{"няма","фаза1", "фаза2"}, new Integer[]{0,50,70}, R.drawable.izolator),
+                new DifSpinnerMission("Фар",new String[]{"няма","фаза1", "фаза2"}, new Integer[]{0,50,80}, R.drawable.izolator),
+                new ExtraSpinnerMission("573e5401d50551814c0de29e", "Кладенци", 10, 5,0, R.drawable.kula),
+                new AnimalsMission("Пречистена вода в базата", 3, 10, R.drawable.smetishte),
+                new AnimalsMission("Пречистена вода в резерва", 3, 20, R.drawable.smetishte),
+                new DifSpinnerMission("Воден резерв",new String[]{"няма","фаза1", "фаза2","фаза3"}, new Integer[]{0,40,70,120}, R.drawable.izolator),
+                new CheckBoxMission("Финал", 30,0, R.drawable.more),
+                new ExtraSpinnerMission("Наказание", 10, -15, R.drawable.penalty)
+                /*new FishMission("Аквариум без база", 5, 13, R.drawable.smetishte),
                 new FishMission("Аквариум с база", 5, 5, R.drawable.smetishte),
                 new CheckBoxMission("Клопка", 25,0, R.drawable.more),
                 new CheckBoxMission("Хищник", 35,0, R.drawable.more),
@@ -29,13 +44,13 @@ public class Missions {
                 new AnimalsMission("Животни в зоо", 16, 13, R.drawable.smetishte),
                 new CheckBoxMission("Семейство", 40,0, R.drawable.more),
                 new DifSpinnerMission("Лъв",new String[]{"няма","фаза1", "фаза2"}, new Integer[]{0,20,35}, R.drawable.izolator),
-                new DifSpinnerMission("Жираф",new String[]{"няма","фаза1", "фаза2"}, new Integer[]{0,30,50}, R.drawable.izolator),
+
                 new DifSpinnerMission("Мечка",new String[]{"няма","фаза1", "фаза2"}, new Integer[]{0,10,50}, R.drawable.izolator),
                 new DifSpinnerMission("Стара планина",new String[]{"няма","фаза1", "фаза2"}, new Integer[]{0,20,50}, R.drawable.izolator),
                 new CheckBoxMission("Край", 25,0, R.drawable.more),
                 new ExtraSpinnerMission("Наказание", 10, -10, R.drawable.penalty)
                 //стара,мечка,жираф,лъв
-              /*  new ExtraSpinnerMission("573e5401d50551814c0de29e", "Кула", 4, 15,1, R.drawable.kula),
+                new ExtraSpinnerMission("573e5401d50551814c0de29e", "Кула", 4, 15,1, R.drawable.kula),
                 new CheckBoxMission("573e5401d50551814c0de29f", "Фабрика", 40,0, R.drawable.fabrika),
                 new FishMission("573e5401d50551814c0de2a0", "Събиране", 18, 2, 4, R.drawable.baza),
                 new FishMission("573e5401d50551814c0de2a1", "Неразделно събиране", 18, 5, R.drawable.smetishte),

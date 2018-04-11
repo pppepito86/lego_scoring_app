@@ -253,14 +253,14 @@ public class ListAdapter extends BaseAdapter {
 
 
         TextView text = (TextView) rowView.findViewById(R.id.text);
-        ImageView image = (ImageView) rowView.findViewById(R.id.image);
+
         text.setText(mission.name);
 
 
 //ok de shte go vidq posle tova
         // gore deto pishe lego mi e interesno moje li vdqsno da slojim edno log na sap mai moze dai da go vidim tva
 
-        image.setImageBitmap(ImageUtil.decodeSampledBitmapFromResource(context.getResources(), mission.imageId, 100, 60));
+
         // teksta iskam da e left centered kato sybirane na plastmasovi otpadyci, drugite da sa syshto tolkova blizo do kartinkata vsichki da pochvat ot kartinkata li?
         // da s malko otstoqnie
 

@@ -92,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
         alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle("Предупреждение");
         if(type=="animals"){
-            alertDialog.setMessage("Превишавате максималния брой животни на полето");
+            alertDialog.setMessage("Превишавате максималния брой чиста вода на полето");
         }else{
-            alertDialog.setMessage("Превишавате максималния брой риби на полето");
+            alertDialog.setMessage("Превишавате максималния брой чиста вода на полето");
         }
 
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             points += morePoints;
         }
         TextView score=(TextView) findViewById(R.id.scoreId);
-        score.setText(points+"/501");
+        score.setText(points+"/730");
     }
     String k1="0";
     String k="";

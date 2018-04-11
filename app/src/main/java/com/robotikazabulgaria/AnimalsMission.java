@@ -26,7 +26,7 @@ public class AnimalsMission extends ExtraSpinnerMission {
                 garbageCount += mission.lastState;
             }
         }
-        return garbageCount <= 16;
+        return garbageCount <= 3;
     }
 
 }
